@@ -1,0 +1,13 @@
+.inline-code {
+    font-family: Courier;
+    font-weight: bold;
+    color: green;
+}
+
+.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    margin: 20px;
+    z-index: 1;
+}

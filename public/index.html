@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>TIC 4° E.S.O.</title>
+
+        <script src="https://zimjs.org/cdn/1.3.2/createjs.js"></script>
+        <script src="https://zimjs.org/cdn/cat/03/zim.js"></script>
+
+        <script type="module">
+
+         import {topics} from "./topics.js";
+         var scaling = "fit";
+         var width = 1024;
+         var height = 768;
+         var color = dark;
+         var outerColor = light;
+
+         var frame = new Frame(scaling, width, height, color, outerColor);
+         frame.on("ready", function() {
+             var stage = frame.stage;
+             var stageW = frame.width;
+             var stageH = frame.height;
+
+             let colors = [blue, red, yellow, pink];
+             let labels = [];
+             let i = 0;
+             for (let topic of topics) {
+                 let label = new Label({
+                     text: topic.title,
+                     size: 80,
+                     color: colors[i++]
+                 }).cur();
+                 label.on("click", () => window.location = topic.link);
+                 labels.push(label);
+             }
+             let topics_list = new Tile({
+                 obj: labels,
+                 unique: true,
+                 align: "center",
+                 cols: 1,
+                 rows: labels.length
+             }).center();
+
+             stage.update();
+
+         }); // end of ready
+        </script>
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+    </head>
+    <body>
+        <!-- canvas with id="myCanvas" is made by zim Frame -->
+    </body>
+</html>

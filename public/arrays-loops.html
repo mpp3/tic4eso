@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Arrays y Bucles</title>
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+        <link rel="stylesheet" href="my.css" >
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+        <script src="https://zimjs.org/cdn/1.3.2/createjs.js"></script>
+        <script src="https://zimjs.org/cdn/cat/01/zim.js"></script>
+    </head>
+
+    <body>
+        <div><a href="./index.html" ><img class="fixed" src="./img/home-button.png" width="50px"></a></div>
+        <div class="reveal">
+            <div class="slides">
+                <section> <!-- Array: qué es -->
+                    <section>
+                        <h1>Arrays</h1>
+                        <p class="fragment fade-up" >
+                            <span style="font-weight: bolder; color: rgb(0, 255, 0)" >Array</span>: Objeto que contiene una lista de objetos.
+                        </p>
+                        <p class="fragment fade-up" >
+                            <span style="font-weight: bolder; color: rgb(0, 255, 0)" >Elemento</span>: Cada uno de los objetos de la lista.
+                        </p>
+                        <p class="fragment fade-up" >
+                            <span style="font-weight: bolder; color: rgb(0, 255, 0)" >Índice</span>: posición de cada elemento en la lista (<span style="color:red" >empezando en 0</span>).
+                        </p>
+                        <script>
+                         var scaling = "holder";
+                         var frame = new Frame(scaling, 1000, 300);
+                         frame.on("ready", function() {
+                             zog("ready from ZIM Frame");
+
+                             var stage = frame.stage;
+                             var stageW = frame.width;
+                             var stageH = frame.height;
+                             frame.color = "#181818";
+
+                             let colors = [pink, red, green, blue];
+                             let indices = [0, 1, 2, 3];
+                             let array = [];
+                             loop(4, i => {
+                                 let label = new Label({
+                                     text: i,
+                                     size: 50,
+                                     bold: true,
+                                     color: colors[i]
+                                 });
+                                 array.push(label);
+                             });
+                             let radiuses = [20, 50, 30, 40];
+                             loop(4, i => {
+                                 let r = new Container();
+                                 let b = new Rectangle({ width: 110, height: 110, color: "rgba(0,0,0,0)", borderColor: "white"}).addTo(r).centerReg();
+                                 let c = new Circle(radiuses[i], colors[i]).addTo(r).center();
+                                 array.push(r); });
+                             let tile = new Tile({
+                                 obj: array,
+                                 rows: 2,
+                                 cols: 4,
+                                 align: "center",
+                                 valign: "middle",
+                                 unique: true
+                             }).center().pos({y: 10, vertical: TOP});
+                             stage.update();
+
+                         }); // end of ready
+                        </script>
+                        <div id="holder"></div>
+                    </section>
+                    <section> <!-- Array definition -->
+                        <h3>Cómo crear un array vacío</h3>
+                        <p class="fragment fade-up">Alternativas:</p>
+                        <pre class="fragment fade-up"><code>let nombre1 = new Array();</code></pre>
+                        <pre class="fragment fade-up"><code>let nombre2 = [];</code></pre>
+                    </section>
+                    <section>
+                        <h3>Cómo añadir elementos a un array</h3>
+                        <p class="fragment fade-up"> Método <span style="font-family:Courier; font-weight:bold; color:green">push</span></p>
+                        <pre class="fragment fade-up" ><code data-trim data-line-numbers="1|2|3|4|5|1-5">
+let nombre = new Array();
+let c1 = new Circle(50, red);
+nombre.push(c1);
+let c2 = new Circle(20, yellow);
+nombre.push(c2);
+                        </code></pre>
+                        <p class="fragment fade-up" >Añadir al crear el array:</p>
+                        <pre class="fragment fade-up" ><code data-trim data-line-numbers="1-2|3|4|1-4">
+let c1 = new Circle(50, red);
+let c2 = new Circle(20, yellow);
+let nombre = new Array(c1, c2);
+let otro = [c1, c2];
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Cómo acceder a un elemento</h3>
+                        <p class="fragment fade-up" >Usar el índice entre <span style="font-weight:bold">corchetes</span></p>
+                        <pre class="fragment fade-up" ><code data-trim data-line-numbers="1|2|3-7|8|1-8" >
+let frutas = ["naranja", "manzana", "mango"];
+console.log(frutas[0]); // naranja
+let circulos = new Array();
+let c1 = new Circle(50, red);
+let c2 = new Circle(20, yellow);
+circulos.push(c1);
+circulos.push(c2);
+circulos[1].center(); // círculo amarillo
+                        </code></pre>
+                    </section>
+                    <section> <!-- Example -->
+                        <div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
+                            <iframe
+                                src="https://glitch.com/embed/#!/embed/start-zim-js?path=README.md&previewSize=0"
+                                title="start-zim-js on Glitch"
+                                allow="geolocation; microphone; camera; midi; vr; encrypted-media"
+                                style="height: 100%; width: 100%; border: 0;">
+                            </iframe>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Cómo cambiar un elemento</h3>
+                        <p class="fragment fade-up">Con el signo <span style="font-family:Courier;font-weight:bold;color:green" >=</span></p>
+                        <pre class="fragment fade-up" ><code data-trim data-line-numbers="1|2|3|1-3">
+let frutas = ["naranja", "manzana", "mango"];
+frutas[1] = "pera"; // frutas = ["naranja", "pera", "mango"]
+console.log(frutas[1]); // pera
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Otras operaciones con arrays</h3>
+                        <p class="fragment fade-up" >Ordenar los elementos: <span style="font-family:Courier;font-weight:bold;color:green" >sort</span></p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let frutas = ["naranja", "manzana", "pera"];
+frutas.sort(); // frutas = ["manzana", "naranja", "pera"]
+                        </code></pre>
+                        <p class="fragment fade-up" >Averiguar posición de un elemento: <span class="inline-code" >indexOf</span></p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let frutas = ["naranja", "manzana", "pera"];
+console.log(frutas.indexOf("manzana")); // 1
+console.log(frutas.indexOf("plátano")); // -1 (no encontrado)
+                        </code></pre>
+                        <p class="fragment fade-up" >Averiguar número de elementos: <span class="inline-code" >length</span></p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let frutas = ["naranja", "manzana", "pera"];
+console.log(frutas.length);  // 3
+                        </code></pre>
+                    </section>
+            </div>
+        </div>
+
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+         // More info about initialization & config:
+         // - https://revealjs.com/initialization/
+         // - https://revealjs.com/config/
+         Reveal.initialize({
+             hash: true,
+             /* disableLayout: true, */
+
+             // Learn about plugins: https://revealjs.com/plugins/
+             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+         });
+        </script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="/__/firebase/8.1.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <!-- Initialize Firebase -->
+        <script src="/__/firebase/init.js"></script>
+    </body>
+</html>
