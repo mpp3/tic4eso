@@ -114,16 +114,6 @@ circulos.push(c2);
 circulos[1].center(); // círculo amarillo
                         </code></pre>
                     </section>
-                    <section> <!-- Example -->
-                        <div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
-                            <iframe
-                                src="https://glitch.com/embed/#!/embed/start-zim-js?path=README.md&previewSize=0"
-                                title="start-zim-js on Glitch"
-                                allow="geolocation; microphone; camera; midi; vr; encrypted-media"
-                                style="height: 100%; width: 100%; border: 0;">
-                            </iframe>
-                        </div>
-                    </section>
                     <section>
                         <h3>Cómo cambiar un elemento</h3>
                         <p class="fragment fade-up">Con el signo <span style="font-family:Courier;font-weight:bold;color:green" >=</span></p>
@@ -151,6 +141,34 @@ console.log(frutas.indexOf("plátano")); // -1 (no encontrado)
 let frutas = ["naranja", "manzana", "pera"];
 console.log(frutas.length);  // 3
                         </code></pre>
+                    </section> <!-- Otras operaciones con arrays -->
+                    <section><!-- Interlude: random numbers -->
+                        <h3>Números aleatorios</h3>
+                        <p class="fragment fade-up" >Generar número aleatorio entre 0 y 1</p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let aleatorioEntre0y1 = Math.random();
+                        </code></pre>
+                        <p class="fragment fade-up" >Número aleatorio entre 0 y N</p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let aleatorioEntre0yN = Math.random() * N;
+                        </code></pre>
+                        <p class="fragment fade-up" >Número aleatorio entre A y B</p>
+                        <pre class="fragment fade-up" ><code data-trim>
+let aleatorioEntreAyB = Math.random() * (B - A) + A;
+                        </code></pre>
+                    </section><!-- Interlude: random numbers -->
+                    <section> <!-- Example -->
+                        <div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
+                            <!-- Copy and Paste Me -->
+                            <div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
+                                <iframe
+                                    src="https://glitch.com/embed/#!/embed/p-5-5?path=script.js&previewSize=0"
+                                    title="p-5-5 on Glitch"
+                                    allow="geolocation; microphone; camera; midi; vr; encrypted-media"
+                                    style="height: 100%; width: 100%; border: 0;">
+                                </iframe>
+                            </div>
+                        </div>
                     </section>
             </div>
         </div>
